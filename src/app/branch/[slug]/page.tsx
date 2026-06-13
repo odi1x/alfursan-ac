@@ -5,18 +5,29 @@ import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
-export default async function BranchPage({ params }: { params: { slug: string } }) {
-  const branch = await prisma.branch.findUnique({
-    where: { slug: params.slug },
-    include: { packages: true },
-  });
+export default async function BranchPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
 
-  if (!branch) {
+  let branch = null;
+  let faqs = [];
+  let coaches = [];
+
+  try {
+    branch = await prisma.branch.findUnique({
+      where: { slug },
+      include: { packages: true },
+    });
+
+    if (!branch) {
+      notFound();
+    }
+
+    faqs = await prisma.fAQ.findMany();
+    coaches = await prisma.coach.findMany();
+  } catch (error) {
+    console.error("Database connection failed on branch page:", error);
     notFound();
   }
-
-  const faqs = await prisma.fAQ.findMany();
-  const coaches = await prisma.coach.findMany();
 
   return (
     <div data-branch={branch.slug} className="pb-[100px]">
