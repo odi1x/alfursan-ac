@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 export default async function BranchPage({ params }: { params: { slug: string } }) {
   const branch = await prisma.branch.findUnique({
     where: { slug: params.slug },
