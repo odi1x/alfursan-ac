@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0B0B0D;
+  --color-surface: #141418;
+  --color-surface-2: #1B1B21;
+  --color-academy-red: #E20713;
+  --color-academy-red-deep: #A50A12;
+  --color-academy-green: #1F9D55;
+  --color-wahda-red: #C2242B;
+  --color-ink: #FFFFFF;
+  --color-muted: #A8ABB4;
+  --color-line: rgba(255, 255, 255, 0.09);
+
+  --font-display: "Changa", "Plex Arabic", system-ui, sans-serif;
+  --font-body: "Plex Arabic", system-ui, sans-serif;
+
+  --animate-nudge: nudge 1.6s ease-in-out infinite;
+
+  @keyframes nudge {
+    50% {
+      transform: translateX(-6px);
+    }
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: "Changa";
+    src: url("/assets/fonts/Changa.woff2") format("woff2");
+    font-weight: 200 800;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Plex Arabic";
+    src: url("/assets/fonts/Plex-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Plex Arabic";
+    src: url("/assets/fonts/Plex-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-display: swap;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
