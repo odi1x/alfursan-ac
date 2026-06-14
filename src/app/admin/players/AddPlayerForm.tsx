@@ -25,6 +25,22 @@ export default function AddPlayerForm() {
         <input name="name" placeholder="اسم اللاعب" required className="bg-surface-2 border border-line rounded-[12px] p-3 text-sm focus:ring-1 focus:ring-academy-red" />
         <select name="club" required className="bg-surface-2 border border-line rounded-[12px] p-3 text-sm focus:ring-1 focus:ring-academy-red">
           <option value="نادي الأهلي">نادي الأهلي</option>
+          <option value="نادي الهلال">نادي الهلال</option>
+          <option value="نادي النصر">نادي النصر</option>
+          <option value="نادي الاتحاد">نادي الاتحاد</option>
+          <option value="نادي الشباب">نادي الشباب</option>
+          <option value="نادي التعاون">نادي التعاون</option>
+          <option value="نادي الاتفاق">نادي الاتفاق</option>
+          <option value="نادي الفتح">نادي الفتح</option>
+          <option value="نادي الفيحاء">نادي الفيحاء</option>
+          <option value="نادي ضمك">نادي ضمك</option>
+          <option value="نادي الرياض">نادي الرياض</option>
+          <option value="نادي الخليج">نادي الخليج</option>
+          <option value="نادي الرائد">نادي الرائد</option>
+          <option value="نادي الطائي">نادي الطائي</option>
+          <option value="نادي أبها">نادي أبها</option>
+          <option value="نادي الأخدود">نادي الأخدود</option>
+          <option value="نادي الحزم">نادي الحزم</option>
           <option value="نادي الوحدة">نادي الوحدة</option>
         </select>
         <input name="year" placeholder="سنة الميلاد (مثال: 2010)" required className="bg-surface-2 border border-line rounded-[12px] p-3 text-sm focus:ring-1 focus:ring-academy-red" />

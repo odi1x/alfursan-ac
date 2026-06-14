@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
+import ContactBar from "@/components/ContactBar";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";

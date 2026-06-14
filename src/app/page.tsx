@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
+import ContactBar from "@/components/ContactBar";
 
 export const dynamic = "force-dynamic";
 
@@ -27,7 +28,7 @@ export default async function Home() {
       {/* ======================= Hero ======================= */}
       <header className="relative pt-[12vh] pb-[40px] px-0 overflow-hidden min-h-[580px] border-b border-line flex flex-col">
         <div
-          className="absolute inset-0 bg-cover bg-no-repeat bg-[center_28%] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-t before:from-bg before:to-bg/30"
+          className="absolute inset-0 bg-cover bg-no-repeat bg-[center_28%] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-t hero-gradient"
           style={{ backgroundImage: `url('${heroBgImage}')` }}
           role="img"
           aria-label="لاعبون من أكاديمية همة الفرسان أثناء التدريب"
@@ -35,7 +36,7 @@ export default async function Home() {
         <div className="relative z-10 w-[min(100%,1060px)] mx-auto px-[20px] flex flex-col items-center justify-center text-center flex-grow">
           <Image className="w-[170px] mb-[12px] opacity-95" src="/assets/logo.png" alt="شعار أكاديمية همة الفرسان" width={170} height={272} priority />
           <div className="text-muted text-[.94rem] font-semibold mb-[2px]">أكاديمية همة الفرسان الرياضية</div>
-          <h1 className="font-display font-[800] text-[clamp(2.4rem,10vw,3.8rem)] leading-[1.1] mb-[18px]" dangerouslySetInnerHTML={{ __html: heroHeadline.replace('تتحقق', '<em class="text-academy-red not-italic relative z-0 before:content-[\'\'] before:absolute before:bottom-[10%] before:inset-inline-[-4px] before:h-[30%] before:bg-[rgba(226,7,19,0.2)] before:-z-10">تتحقق</em>') }}>
+          <h1 className="font-display font-[800] text-[clamp(2rem,9vw,3.6rem)] leading-[1.1] mb-[18px]" dangerouslySetInnerHTML={{ __html: heroHeadline.replace('تتحقق', '<em class="text-academy-red not-italic relative z-0 before:content-[\'\'] before:absolute before:bottom-[10%] before:inset-inline-[-4px] before:h-[30%] before:bg-[rgba(226,7,19,0.2)] before:-z-10">تتحقق</em>') }}>
           </h1>
           <p className="text-[#DFE1E8] text-[1.05rem] leading-[1.6] max-w-[480px] mb-[32px] px-[10px]">
             {heroSubheading}
@@ -165,6 +166,7 @@ export default async function Home() {
         <div className="font-display font-semibold text-[1rem]">أكاديمية همة الفرسان الرياضية</div>
         <div className="text-muted text-[.78rem] mt-[4px]">مكة المكرمة — فرع النزهة، فرع البحيرات</div>
       </footer>
+      <ContactBar branches={branches.map(b => ({ id: b.id, name: b.name, whatsapp: b.whatsapp, phoneIntl: b.phoneIntl || "", waMessage: b.waMessage || "" }))} />
     </>
   );
 }

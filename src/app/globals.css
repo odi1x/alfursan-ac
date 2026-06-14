@@ -60,3 +60,10 @@
     }
   }
 }
+
+@layer utilities {
+  .hero-gradient {
+    background: linear-gradient(to top, var(--color-bg) 13%, rgba(11,11,13,0.78) 52%, rgba(11,11,13,0.28) 100%),
+                linear-gradient(115deg, rgba(165,10,18,0.38), transparent 55%);
+  }
+}
