@@ -2,6 +2,7 @@ import prisma from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
 import ContactBar from "@/components/ContactBar";
+import PlayerCarousel from "@/components/PlayerCarousel";
 
 export const dynamic = "force-dynamic";
 
@@ -28,7 +29,7 @@ export default async function Home() {
       {/* ======================= Hero ======================= */}
       <header className="relative pt-[12vh] pb-[40px] px-0 overflow-hidden min-h-[580px] border-b border-line flex flex-col">
         <div
-          className="absolute inset-0 bg-cover bg-no-repeat bg-[center_28%] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-t hero-gradient"
+          className="absolute inset-0 bg-cover bg-no-repeat bg-[center_28%] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-t hero-gradient-original"
           style={{ backgroundImage: `url('${heroBgImage}')` }}
           role="img"
           aria-label="لاعبون من أكاديمية همة الفرسان أثناء التدريب"
@@ -85,25 +86,7 @@ export default async function Home() {
           <h2 className="font-display font-[800] text-[clamp(1.7rem,8vw,2.4rem)] leading-[1.2] mb-[12px]" id="players-title">لاعبونا المنتقلون للأندية</h2>
           <p className="text-muted text-[.98rem] leading-[1.6] max-w-[600px]">20 لاعباً تدرّبوا عندنا واليوم يمثلون أندية الأهلي والوحدة في الفئات السنية.</p>
         </div>
-        <div className="flex gap-[12px] px-[20px] overflow-x-auto snap-x snap-mandatory scrollbar-none pb-[12px]">
-          {/* Double map to simulate infinite scrolling without complex JS for now, matching static visual layout */}
-          {[...players, ...players].map((p, i) => (
-            <article key={i} className="flex-none basis-[164px] snap-start bg-surface border border-line rounded-[16px] overflow-hidden sm:basis-[190px]" aria-hidden={i >= players.length ? 'true' : undefined}>
-              <div className="bg-[#dcdcdc] relative w-full aspect-square">
-                {p.imageUrl ? (
-                  <Image className="w-full h-full object-cover" src={p.imageUrl} alt={i >= players.length ? "" : "اللاعب " + p.name} width={184} height={183} />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-surface-2 text-muted text-xs">لا توجد صورة</div>
-                )}
-              </div>
-              <div className="p-[14px] pt-[2px] text-center">
-                <div className="font-display font-semibold text-[1rem] leading-[1.5] mt-2">{p.name}</div>
-                <span className={`inline-block mt-[6px] text-[.74rem] font-semibold px-[12px] py-[3px] rounded-full text-white ${p.club.includes("الأهلي") ? "bg-academy-green" : "bg-wahda-red"}`}>{p.club}</span>
-                <span className="block text-muted text-[.72rem] mt-[5px]">مواليد {p.year}</span>
-              </div>
-            </article>
-          ))}
-        </div>
+        <PlayerCarousel players={players} />
         <div className="w-[min(100%,1060px)] mx-auto px-[20px]">
           <span className="flex items-center gap-[8px] text-muted text-[.78rem] mt-[6px] after:content-['⟵'] after:text-academy-red after:animate-nudge">الشريط يتحرك تلقائياً — المسه للتوقف وتصفّحه بنفسك</span>
         </div>
@@ -153,7 +136,7 @@ export default async function Home() {
       </section>
 
       {/* ======================= CTA ختامي ======================= */}
-      <section className="text-center bg-[radial-gradient(90%_120%_at_50%_120%,rgba(165,10,18,0.5),transparent_65%),var(--color-bg)] pt-[54px] pb-[60px]">
+      <section className="text-center cta-gradient-original pt-[54px] pb-[60px]">
         <div className="w-[min(100%,1060px)] mx-auto px-[20px]">
           <h2 className="font-display font-[800] text-[clamp(1.4rem,6vw,2rem)] leading-[1.2] mb-[12px]">جاهز يبدأ ابنك رحلته الكروية؟</h2>
           <p className="text-muted text-[.98rem] leading-[1.6] max-w-[600px] mx-auto mb-[26px]">تواصل معنا الآن من الأزرار بالأسفل — فريقنا يرد عليك مباشرة.</p>

@@ -74,7 +74,7 @@ export default function ContactBar({
                 <span>واتساب</span>
               </a>
               <a
-                className="flex items-center justify-center gap-[9px] font-display font-semibold text-[1rem] rounded-[13px] px-[10px] py-[14px] min-h-[54px] text-white transition-transform duration-120 ease-out active:scale-95 bg-surface-2 border border-line"
+                className="flex items-center justify-center gap-[9px] font-display font-semibold text-[1rem] rounded-[13px] px-[10px] py-[14px] min-h-[54px] text-white transition-transform duration-120 ease-out active:scale-95 bg-academy-red border-none"
                 href={telLink(branch)}
               >
                 {ICON_CALL}
@@ -91,7 +91,7 @@ export default function ContactBar({
                 <span>واتساب</span>
               </button>
               <button
-                className="flex items-center justify-center gap-[9px] font-display font-semibold text-[1rem] rounded-[13px] px-[10px] py-[14px] min-h-[54px] text-white transition-transform duration-120 ease-out active:scale-95 bg-surface-2 border border-line"
+                className="flex items-center justify-center gap-[9px] font-display font-semibold text-[1rem] rounded-[13px] px-[10px] py-[14px] min-h-[54px] text-white transition-transform duration-120 ease-out active:scale-95 bg-academy-red border-none"
                 onClick={() => openSheet("call")}
               >
                 {ICON_CALL}
@@ -128,7 +128,7 @@ export default function ContactBar({
                     href={link}
                     target={isWa ? "_blank" : undefined}
                     rel={isWa ? "noopener noreferrer" : undefined}
-                    className="flex items-center justify-between p-[16px] bg-surface-2 border border-line rounded-[14px] font-display font-semibold text-[1.05rem] transition-colors active:border-academy-red"
+                    className="flex items-center justify-between p-[16px] bg-academy-red border-none rounded-[14px] font-display font-semibold text-[1.05rem] transition-colors active:border-academy-red"
                   >
                     <span>{b.name}</span>
                     <span className="text-muted text-[1.2rem] opacity-70">
@@ -139,7 +139,7 @@ export default function ContactBar({
               })}
             </div>
             <button
-              className="mt-[20px] w-full p-[14px] font-display font-semibold text-muted bg-surface-2 rounded-[14px]"
+              className="mt-[20px] w-full p-[14px] font-display font-semibold text-muted bg-academy-red rounded-[14px]"
               onClick={closeSheet}
             >
               إغلاق

@@ -193,7 +193,7 @@ export default async function BranchPage({ params }: { params: Promise<{ slug: s
       </section>
 
       {/* ======================= CTA ختامي ======================= */}
-      <section className="text-center bg-[radial-gradient(90%_120%_at_50%_120%,rgba(165,10,18,0.5),transparent_65%),var(--color-bg)] pt-[30px] pb-[60px]">
+      <section className="text-center cta-gradient-original pt-[30px] pb-[60px]">
         <div className="w-[min(100%,1060px)] mx-auto px-[20px]">
           <h2 className="font-display font-[800] text-[clamp(1.4rem,6vw,2rem)] leading-[1.2] mb-[12px]">احجز مكان ابنك قبل اكتمال الفئات</h2>
           <p className="text-muted text-[.98rem] leading-[1.6] max-w-[600px] mx-auto">تواصل معنا الآن من الأزرار بالأسفل وسنحدد لك الفئة والموعد المناسب.</p>
