@@ -19,18 +19,18 @@ export default function ImageKitUploader({ onUploadSuccess, folder }: { onUpload
       const data = await response.json();
       const { signature, expire, token } = data;
       return { signature, expire, token };
-    } catch (error: any) {
-      throw new Error(`Authentication request failed: ${error.message}`);
+    } catch (error: unknown) {
+      throw new Error(`Authentication request failed: ${(error as Error).message}`);
     }
   };
 
-  const onError = (err: any) => {
+  const onError = (err: unknown) => {
     console.error("Error uploading image:", err);
     setUploading(false);
     alert("حدث خطأ أثناء رفع الصورة.");
   };
 
-  const onSuccess = (res: any) => {
+  const onSuccess = (res: { url: string }) => {
     setUploading(false);
     setPreview(res.url);
     onUploadSuccess(res.url);

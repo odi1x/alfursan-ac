@@ -1,5 +1,7 @@
+export const dynamic = "force-dynamic";
 import type { Metadata } from "next";
 import "./globals.css";
+import prisma from "@/lib/prisma";
 
 import { Viewport } from "next";
 
@@ -17,12 +19,17 @@ export const viewport: Viewport = {
 
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import ContactBarWrapper from "@/components/ContactBarWrapper";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const branches = await prisma.branch.findMany({
+    select: { id: true, name: true, phone: true, phoneIntl: true, whatsapp: true, waMessage: true, slug: true }
+  });
+
   return (
     <html lang="ar" dir="rtl">
       <head>
@@ -33,6 +40,7 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+        <ContactBarWrapper branches={branches} />
         <Analytics />
         <SpeedInsights />
       </body>

@@ -4,6 +4,27 @@ import { useState, useRef } from "react";
 import ImageKitUploader from "@/components/ImageKitUploader";
 import { createPlayer } from "@/app/actions";
 
+const SPL_TEAMS = [
+  "نادي الهلال",
+  "نادي النصر",
+  "نادي الاتحاد",
+  "نادي الأهلي",
+  "نادي الشباب",
+  "نادي الاتفاق",
+  "نادي التعاون",
+  "نادي الفيحاء",
+  "نادي ضمك",
+  "نادي الخليج",
+  "نادي الرائد",
+  "نادي الوحدة",
+  "نادي أبها",
+  "نادي الطائي",
+  "نادي الأخدود",
+  "نادي الرياض",
+  "نادي الحزم",
+  "نادي القادسية"
+];
+
 export default function AddPlayerForm() {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -24,8 +45,9 @@ export default function AddPlayerForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <input name="name" placeholder="اسم اللاعب" required className="bg-surface-2 border border-line rounded-[12px] p-3 text-sm focus:ring-1 focus:ring-academy-red" />
         <select name="club" required className="bg-surface-2 border border-line rounded-[12px] p-3 text-sm focus:ring-1 focus:ring-academy-red">
-          <option value="نادي الأهلي">نادي الأهلي</option>
-          <option value="نادي الوحدة">نادي الوحدة</option>
+          {SPL_TEAMS.map((team) => (
+             <option key={team} value={team}>{team}</option>
+          ))}
         </select>
         <input name="year" placeholder="سنة الميلاد (مثال: 2010)" required className="bg-surface-2 border border-line rounded-[12px] p-3 text-sm focus:ring-1 focus:ring-academy-red" />
       </div>

@@ -1,3 +1,4 @@
+import { getClubColorClass } from "@/lib/clubColors";
 import prisma from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,7 +28,7 @@ export default async function Home() {
       {/* ======================= Hero ======================= */}
       <header className="relative pt-[12vh] pb-[40px] px-0 overflow-hidden min-h-[580px] border-b border-line flex flex-col">
         <div
-          className="absolute inset-0 bg-cover bg-no-repeat bg-[center_28%] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-t before:from-bg before:to-bg/30"
+          className="absolute inset-0 bg-cover bg-no-repeat bg-[center_28%] before:content-[''] before:absolute before:inset-0 before:bg-[linear-gradient(to_top,var(--color-bg)_0%,rgba(11,11,13,.78)_52%,rgba(11,11,13,.28)_100%),linear-gradient(115deg,rgba(165,10,18,.38),transparent_55%)]"
           style={{ backgroundImage: `url('${heroBgImage}')` }}
           role="img"
           aria-label="لاعبون من أكاديمية همة الفرسان أثناء التدريب"
@@ -50,7 +51,7 @@ export default async function Home() {
           <div className="w-[min(100%,1060px)] mx-auto px-[20px]">
             <div className="flex gap-[20px] overflow-x-auto scrollbar-none snap-x snap-mandatory">
               {announcements.map(a => (
-                <div key={a.id} className="flex-none snap-start whitespace-nowrap text-[.9rem] font-medium flex items-center gap-[8px]">
+                <div key={a.id} className="flex-none whitespace-nowrap text-[.9rem] font-medium flex items-center gap-[8px]">
                   <span className="bg-white/20 px-2 py-0.5 rounded text-xs">جديد</span>
                   {a.title} — {a.content}
                 </div>
@@ -84,10 +85,10 @@ export default async function Home() {
           <h2 className="font-display font-[800] text-[clamp(1.7rem,8vw,2.4rem)] leading-[1.2] mb-[12px]" id="players-title">لاعبونا المنتقلون للأندية</h2>
           <p className="text-muted text-[.98rem] leading-[1.6] max-w-[600px]">20 لاعباً تدرّبوا عندنا واليوم يمثلون أندية الأهلي والوحدة في الفئات السنية.</p>
         </div>
-        <div className="flex gap-[12px] px-[20px] overflow-x-auto snap-x snap-mandatory scrollbar-none pb-[12px]">
+        <div className="flex gap-[12px] px-[20px] pb-[12px] w-max animate-infinite-scroll hover:animation-paused active:animation-paused">
           {/* Double map to simulate infinite scrolling without complex JS for now, matching static visual layout */}
           {[...players, ...players].map((p, i) => (
-            <article key={i} className="flex-none basis-[164px] snap-start bg-surface border border-line rounded-[16px] overflow-hidden sm:basis-[190px]" aria-hidden={i >= players.length ? 'true' : undefined}>
+            <article key={i} className="flex-none basis-[164px] bg-surface border border-line rounded-[16px] overflow-hidden sm:basis-[190px]" aria-hidden={i >= players.length ? 'true' : undefined}>
               <div className="bg-[#dcdcdc] relative w-full aspect-square">
                 {p.imageUrl ? (
                   <Image className="w-full h-full object-cover" src={p.imageUrl} alt={i >= players.length ? "" : "اللاعب " + p.name} width={184} height={183} />
@@ -97,7 +98,7 @@ export default async function Home() {
               </div>
               <div className="p-[14px] pt-[2px] text-center">
                 <div className="font-display font-semibold text-[1rem] leading-[1.5] mt-2">{p.name}</div>
-                <span className={`inline-block mt-[6px] text-[.74rem] font-semibold px-[12px] py-[3px] rounded-full text-white ${p.club.includes("الأهلي") ? "bg-academy-green" : "bg-wahda-red"}`}>{p.club}</span>
+                <span className={`inline-block mt-[6px] text-[.74rem] font-semibold px-[12px] py-[3px] rounded-full text-white ${getClubColorClass(p.club)}`}>{p.club}</span>
                 <span className="block text-muted text-[.72rem] mt-[5px]">مواليد {p.year}</span>
               </div>
             </article>
@@ -142,7 +143,7 @@ export default async function Home() {
         </div>
         <div className="flex gap-[14px] overflow-x-auto px-[20px] pt-[24px] pb-[10px] snap-x snap-mandatory scrollbar-none">
           {reviews.map((r) => (
-            <article key={r.id} className="flex-none basis-[min(78vw,330px)] snap-start bg-surface border border-line rounded-[16px] p-[20px] flex flex-col gap-[10px]">
+            <article key={r.id} className="flex-none basis-[min(78vw,330px)] bg-surface border border-line rounded-[16px] p-[20px] flex flex-col gap-[10px]">
               <div className="text-[#FFD666] tracking-[3px] text-[.85rem]" aria-label="خمس نجوم">★★★★★</div>
               <p className="text-[.9rem] text-[#E7E8EC]">{r.text}</p>
               <div className="mt-auto text-muted text-[.78rem] font-semibold">{r.author} — عبر Google Maps</div>
@@ -152,7 +153,7 @@ export default async function Home() {
       </section>
 
       {/* ======================= CTA ختامي ======================= */}
-      <section className="text-center bg-[radial-gradient(90%_120%_at_50%_120%,rgba(165,10,18,0.5),transparent_65%),var(--color-bg)] pt-[54px] pb-[60px]">
+      <section className="text-center bg-[linear-gradient(to_top,var(--color-bg)_0%,rgba(11,11,13,.78)_52%,rgba(11,11,13,.28)_100%),linear-gradient(115deg,rgba(165,10,18,.38),transparent_55%)] pt-[54px] pb-[60px]">
         <div className="w-[min(100%,1060px)] mx-auto px-[20px]">
           <h2 className="font-display font-[800] text-[clamp(1.4rem,6vw,2rem)] leading-[1.2] mb-[12px]">جاهز يبدأ ابنك رحلته الكروية؟</h2>
           <p className="text-muted text-[.98rem] leading-[1.6] max-w-[600px] mx-auto mb-[26px]">تواصل معنا الآن من الأزرار بالأسفل — فريقنا يرد عليك مباشرة.</p>
