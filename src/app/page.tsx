@@ -33,15 +33,21 @@ export default async function Home() {
           role="img"
           aria-label="لاعبون من أكاديمية همة الفرسان أثناء التدريب"
         />
-        <div className="relative z-10 w-[min(100%,1060px)] mx-auto px-[20px] flex flex-col items-center justify-center text-center flex-grow">
-          <Image className="w-[170px] mb-[12px] opacity-95" src="/assets/logo.png" alt="شعار أكاديمية همة الفرسان" width={170} height={272} priority />
-          <div className="text-muted text-[.94rem] font-semibold mb-[2px]">أكاديمية همة الفرسان الرياضية</div>
-          <h1 className="font-display font-[800] text-[clamp(2.4rem,10vw,3.8rem)] leading-[1.1] mb-[18px]" dangerouslySetInnerHTML={{ __html: heroHeadline.replace('تتحقق', '<em class="text-academy-red not-italic relative z-0 before:content-[\'\'] before:absolute before:bottom-[10%] before:inset-inline-[-4px] before:h-[30%] before:bg-[rgba(226,7,19,0.2)] before:-z-10">تتحقق</em>') }}>
+        <div className="relative z-10 w-[min(100%,1060px)] mx-auto px-[20px] flex flex-col items-center justify-center text-center flex-grow mt-[20px]">
+          <div className="flex items-center justify-center gap-6 mb-[16px]">
+            <div className="flex flex-col text-right font-display font-black text-academy-red text-[2.5rem] leading-[1.1]">
+              <span>همة</span>
+              <span>الفرسان</span>
+            </div>
+            <Image className="w-[150px] sm:w-[180px] opacity-100 drop-shadow-xl" src="/assets/logo.png" alt="شعار أكاديمية همة الفرسان" width={180} height={288} priority />
+          </div>
+          <div className="text-white font-display text-[1.2rem] sm:text-[1.5rem] font-bold mb-[12px] drop-shadow-md">أكاديمية همة الفرسان الرياضية</div>
+          <h1 className="font-display font-[900] text-[clamp(2.5rem,10vw,4.2rem)] leading-[1.1] mb-[24px] text-white" dangerouslySetInnerHTML={{ __html: heroHeadline.replace('تتحقق', '<em class="text-academy-red not-italic">تتحقق</em>') }}>
           </h1>
-          <p className="text-[#DFE1E8] text-[1.05rem] leading-[1.6] max-w-[480px] mb-[32px] px-[10px]">
+          <p className="text-[#DFE1E8] font-display text-[1.1rem] sm:text-[1.2rem] leading-[1.7] max-w-[540px] mx-auto mb-[36px] px-[10px]">
             {heroSubheading}
           </p>
-          <a className="inline-flex items-center justify-center font-display font-semibold text-[1.1rem] rounded-[16px] px-[32px] min-h-[58px] bg-academy-red text-white shadow-[0_8px_24px_rgba(226,7,19,0.35)] transition-transform duration-200 active:scale-95" href="#branches">اختر فرعك وابدأ</a>
+          <a className="inline-flex items-center justify-center font-display font-bold text-[1.2rem] rounded-full px-[48px] min-h-[64px] bg-academy-red text-white shadow-[0_8px_32px_rgba(226,7,19,0.4)] transition-transform duration-200 active:scale-95" href="#branches">اختر فرعك وابدأ</a>
         </div>
       </header>
 
@@ -153,11 +159,12 @@ export default async function Home() {
       </section>
 
       {/* ======================= CTA ختامي ======================= */}
-      <section className="text-center bg-[linear-gradient(to_top,var(--color-bg)_0%,rgba(11,11,13,.78)_52%,rgba(11,11,13,.28)_100%),linear-gradient(115deg,rgba(165,10,18,.38),transparent_55%)] pt-[54px] pb-[60px]">
-        <div className="w-[min(100%,1060px)] mx-auto px-[20px]">
-          <h2 className="font-display font-[800] text-[clamp(1.4rem,6vw,2rem)] leading-[1.2] mb-[12px]">جاهز يبدأ ابنك رحلته الكروية؟</h2>
-          <p className="text-muted text-[.98rem] leading-[1.6] max-w-[600px] mx-auto mb-[26px]">تواصل معنا الآن من الأزرار بالأسفل — فريقنا يرد عليك مباشرة.</p>
-          <a className="inline-flex items-center justify-center font-display font-semibold text-[1.1rem] rounded-[16px] px-[32px] min-h-[58px] bg-transparent text-white border border-line transition-colors duration-200 active:bg-white/5" href="#branches">شاهد الفروع مرة أخرى</a>
+      <section className="py-[80px] relative border-t border-line overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(226,7,19,0.25)_0%,var(--color-bg)_70%)] -z-10" />
+        <div className="w-[min(100%,1060px)] mx-auto px-[20px] text-center relative z-10">
+          <h2 className="text-[clamp(2.2rem,6vw,3rem)] font-display font-[900] mb-[20px]">جاهز لتكون البطل القادم؟</h2>
+          <p className="text-[#DFE1E8] font-display text-[1.1rem] sm:text-[1.2rem] max-w-[600px] mx-auto mb-[40px]">انضم إلى مئات اللاعبين الذين بدأوا رحلتهم الاحترافية معنا. سجل الآن واحجز مكانك.</p>
+          <a className="inline-flex items-center justify-center font-display font-bold text-[1.2rem] rounded-full px-[48px] min-h-[64px] bg-academy-red text-white shadow-[0_8px_32px_rgba(226,7,19,0.4)] transition-transform duration-200 active:scale-95" href="#branches">انضم للأكاديمية الآن</a>
         </div>
       </section>
 
