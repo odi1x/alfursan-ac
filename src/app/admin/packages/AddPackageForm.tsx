@@ -36,7 +36,7 @@ export default function AddPackageForm({ branches }: { branches: Branch[] }) {
       </div>
       <div className="flex items-center gap-2">
         <input type="checkbox" name="featured" id="featured" className="w-4 h-4 text-academy-red bg-surface-2 border-line rounded focus:ring-academy-red focus:ring-offset-bg" />
-        <label htmlFor="featured" className="text-sm">تمييز كـ "الأكثر توفيراً"</label>
+        <label htmlFor="featured" className="text-sm">تمييز كـ &quot;الأكثر توفيراً&quot;</label>
       </div>
       <button type="submit" className="bg-academy-red text-white py-2 px-6 rounded-[12px] w-fit font-display font-semibold hover:opacity-90 transition-opacity">إضافة</button>
     </form>

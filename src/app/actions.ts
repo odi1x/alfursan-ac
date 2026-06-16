@@ -20,6 +20,14 @@ export async function createPackage(data: { name: string, price: number, unit: s
   revalidatePath(`/branch/[slug]`, "page");
 }
 
+export async function updatePackage(id: string, data: { name: string, price: number, unit: string, sessions: string, note: string | null, featured: boolean }) {
+  await checkAuth();
+  await prisma.package.update({ where: { id }, data });
+  revalidatePath("/");
+  revalidatePath(`/branch/[slug]`, "page");
+  revalidatePath(`/admin/packages`, "page");
+}
+
 export async function deletePackage(id: string) {
   await checkAuth();
   await prisma.package.delete({ where: { id } });

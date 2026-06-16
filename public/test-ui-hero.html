@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'academy-red': '#e20713',
+              'academy-red-dark': '#b3050f',
+              'academy-red-light': '#ff1a26',
+              bg: '#0b0b0d',
+              surface: '#151518',
+              'surface-hover': '#1e1e24',
+              line: '#26262d',
+              'text-main': '#fcfcfc',
+              muted: '#8f94a1',
+            },
+            fontFamily: {
+              display: ['"Tajawal"', 'sans-serif'],
+              body: ['"Tajawal"', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body { background-color: #0b0b0d; color: #fcfcfc; }
+      :root { --color-bg: #0b0b0d; --bg: #0b0b0d; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="font-body bg-bg text-text-main antialiased selection:bg-academy-red selection:text-white pb-32">
+
+    <!-- HERO SECTION -->
+    <header class="relative pt-[12vh] pb-[40px] px-0 overflow-hidden min-h-[580px] border-b border-line flex flex-col">
+        <div
+            class="absolute inset-0 bg-cover bg-no-repeat bg-[center_28%] before:content-[''] before:absolute before:inset-0 before:bg-[linear-gradient(to_top,var(--color-bg)_0%,rgba(11,11,13,.78)_52%,rgba(11,11,13,.28)_100%),linear-gradient(115deg,rgba(165,10,18,.38),transparent_55%)]"
+            style="background-image: url('https://res.cloudinary.com/dwyx1yoxe/image/upload/v1727725920/hero-bg_ofj8qk.jpg');"
+        ></div>
+        <div class="relative z-10 w-[min(100%,1060px)] mx-auto px-[20px] flex flex-col items-center justify-center text-center flex-grow mt-[20px]">
+            <img class="w-[150px] sm:w-[180px] opacity-100 drop-shadow-xl mx-auto mb-[20px]" src="https://res.cloudinary.com/dwyx1yoxe/image/upload/v1727725920/logo_ofj8qk.png" alt="شعار أكاديمية همة الفرسان" />
+            <div class="text-white font-display text-[clamp(2.2rem,8vw,3.5rem)] font-[900] leading-[1.2] mb-[12px] drop-shadow-md">أكاديمية همة الفرسان الرياضية</div>
+            <h1 class="font-display font-[900] text-[clamp(2rem,6vw,2.5rem)] leading-[1.1] mb-[12px] text-white">حيث <em class="text-academy-red not-italic">تتحقق</em> الأحلام</h1>
+            <p class="text-[#DFE1E8] font-display text-[1.1rem] sm:text-[1.3rem] max-w-[600px] mx-auto mb-[36px] px-[10px] drop-shadow-md">
+                بيئة رياضية احترافية لبناء جيل جديد من الأبطال
+            </p>
+            <a class="inline-flex items-center justify-center font-display font-bold text-[1.2rem] rounded-full px-[48px] min-h-[64px] bg-academy-red text-white shadow-[0_8px_32px_rgba(226,7,19,0.4)] transition-transform duration-200 active:scale-95" href="#branches">اختر فرعك وابدأ</a>
+        </div>
+    </header>
+
+</body>
+</html>
