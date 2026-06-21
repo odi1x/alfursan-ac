@@ -35,7 +35,7 @@ export default async function Home() {
         />
         <div className="relative z-10 w-[min(100%,1060px)] mx-auto px-[20px] flex flex-col items-center justify-center text-center flex-grow mt-[20px]">
           <Image className="w-[120px] sm:w-[180px] opacity-100 drop-shadow-xl mx-auto mb-[12px] sm:mb-[20px]" src="/assets/logo.png" alt="شعار أكاديمية همة الفرسان" width={180} height={288} priority />
-          <div className="text-white font-display text-[clamp(2.2rem,8vw,3.5rem)] font-[900] leading-[1.2] mb-[8px] sm:mb-[12px] drop-shadow-md">أكاديمية همة الفرسان الرياضية</div>
+          <div className="text-white font-display whitespace-nowrap text-[clamp(1.3rem,6vw,2.2rem)] sm:text-[clamp(2.2rem,8vw,3.5rem)] font-[900] leading-[1.2] mb-[8px] sm:mb-[12px] drop-shadow-md">أكاديمية همة الفرسان الرياضية</div>
           <h1 className="font-display font-[900] text-[clamp(2rem,6vw,2.5rem)] leading-[1.1] mb-[8px] sm:mb-[12px] text-white" dangerouslySetInnerHTML={{ __html: heroHeadline.replace('تتحقق', '<em class="text-academy-red not-italic">تتحقق</em>') }}>
           </h1>
           <p className="text-[#DFE1E8] font-display text-[1.05rem] sm:text-[1.3rem] max-w-[600px] mx-auto mb-[24px] sm:mb-[36px] px-[10px] drop-shadow-md">
