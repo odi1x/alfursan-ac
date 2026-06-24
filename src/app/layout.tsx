@@ -17,6 +17,7 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
+import AnalyticsScripts from "@/components/AnalyticsScripts";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ContactBarWrapper from "@/components/ContactBarWrapper";
@@ -41,6 +42,7 @@ export default async function RootLayout({
       <body>
         {children}
         <ContactBarWrapper branches={branches} />
+        <AnalyticsScripts />
         <Analytics />
         <SpeedInsights />
       </body>
