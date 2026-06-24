@@ -67,3 +67,39 @@ export const trackBranchView = (branchName: string) => {
     });
   }
 };
+
+/**
+ * Tracks when a user initiates contact with a specific branch.
+ * @param channel The communication channel ("whatsapp" | "call")
+ * @param branchName The name of the branch contacted.
+ * @param phoneNumber The phone number the user will contact.
+ */
+export const trackContact = (channel: "whatsapp" | "call", branchName: string, phoneNumber: string) => {
+  // Meta Pixel
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("trackCustom", "ContactInitiated", {
+      channel: channel,
+      branch_name: branchName,
+      phone_number: phoneNumber
+    });
+  }
+
+  // Google Analytics
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", "contact_initiated", {
+      event_category: "contact",
+      event_label: branchName,
+      channel: channel,
+      branch_name: branchName,
+      phone_number: phoneNumber
+    });
+  }
+
+  // Snapchat Pixel
+  if (typeof window !== "undefined" && window.snaptr) {
+    window.snaptr("track", "CUSTOM_EVENT_2", {
+      description: "Contact Initiated",
+      item_category: channel,
+    });
+  }
+};

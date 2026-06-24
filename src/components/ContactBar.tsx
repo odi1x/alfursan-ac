@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackContact } from "@/lib/analytics";
 
 const ICON_CALL = (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-[21px] h-[21px] shrink-0">
@@ -37,6 +38,16 @@ export default function ContactBar({ branches, currentBranchId }: { branches: Br
 
   const closeSheet = () => setSheetOpen(false);
 
+  const handleDirectContact = (channel: "whatsapp" | "call") => {
+    const b = branches.find(b => b.id === currentBranchId) || branches[0];
+    trackContact(channel, b.name, b.phone);
+  };
+
+  const handleSheetContact = (channel: "whatsapp" | "call", b: Branch) => {
+    trackContact(channel, b.name, b.phone);
+    closeSheet();
+  };
+
   return (
     <>
       <div className="fixed bottom-0 inset-x-0 z-[60] bg-[rgba(15,15,18,.92)] backdrop-blur-[14px] border-t border-line pb-[calc(12px+env(safe-area-inset-bottom))] pt-[12px] px-[16px]">
@@ -48,12 +59,14 @@ export default function ContactBar({ branches, currentBranchId }: { branches: Br
                 href={waLink(branches.find(b => b.id === currentBranchId) || branches[0])}
                 target="_blank"
                 rel="noopener"
+                onClick={() => handleDirectContact("whatsapp")}
                 className="flex items-center justify-center gap-[9px] font-display font-semibold text-[1rem] rounded-[13px] px-[10px] py-[14px] min-h-[54px] text-white transition-transform duration-150 active:scale-97 bg-[#1FA855] shadow-[0_8px_24px_rgba(31,168,85,.3)]"
               >
                 {ICON_WA}<span>واتساب</span>
               </a>
               <a
                 href={telLink(branches.find(b => b.id === currentBranchId) || branches[0])}
+                onClick={() => handleDirectContact("call")}
                 className="flex items-center justify-center gap-[9px] font-display font-semibold text-[1rem] rounded-[13px] px-[10px] py-[14px] min-h-[54px] text-white transition-transform duration-150 active:scale-97 bg-academy-red shadow-[0_8px_24px_rgba(226,7,19,.32)]"
               >
                 {ICON_CALL}<span>اتصل الآن</span>
@@ -97,7 +110,7 @@ export default function ContactBar({ branches, currentBranchId }: { branches: Br
               href={sheetChannel === "whatsapp" ? waLink(b) : telLink(b)}
               target={sheetChannel === "whatsapp" ? "_blank" : undefined}
               rel={sheetChannel === "whatsapp" ? "noopener" : undefined}
-              onClick={closeSheet}
+              onClick={() => handleSheetContact(sheetChannel, b)}
               className="flex items-center justify-between bg-surface border border-line rounded-[14px] px-[18px] py-[16px] font-display font-semibold text-[1.02rem] w-full text-start after:content-['⟵'] after:text-academy-red"
             >
               <span>{b.name}<small className="block font-body font-normal text-muted text-[.76rem]">{b.phone}</small></span>
