@@ -71,7 +71,7 @@ export default async function BranchPage({ params }: { params: Promise<{ slug: s
             <details className="bg-surface border border-line rounded-[16px] overflow-hidden group open:border-[rgba(226,7,19,0.45)]">
               <summary className="list-none flex items-center gap-[14px] p-[18px_20px] cursor-pointer select-none font-display font-semibold text-[1.08rem] [&::-webkit-details-marker]:hidden">
                 <span className="w-[38px] h-[38px] shrink-0 grid place-items-center bg-[rgba(226,7,19,0.12)] text-academy-red rounded-[11px] text-[1.1rem]">🏷️</span>
-                الباقات والأسعار
+                الباقات والعروض
                 <span className="ms-auto text-muted transition-transform duration-250 ease text-[.8rem] group-open:rotate-180">▼</span>
               </summary>
               <div className="p-[2px_20px_20px] text-[#DDDEE3] text-[.93rem]">
